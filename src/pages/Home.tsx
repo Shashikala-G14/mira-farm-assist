@@ -1,11 +1,21 @@
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Shield, Activity, BookOpen, FileText, BarChart3, Bell, Users, Globe, Award } from 'lucide-react';
 import farmHero from '@/assets/farm-hero.jpg';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Home = () => {
+  const { userRole, profile } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userRole === 'policymaker') {
+      navigate('/policymaker');
+    }
+  }, [userRole, navigate]);
   const features = [
     {
       icon: Activity,
@@ -94,11 +104,16 @@ const Home = () => {
             Digital Farm Biosecurity Platform
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-            Protect Your Farm with
-            <span className="text-primary block">FarmSecure</span>
+            Welcome to KrishiCure, {profile?.name}
           </h1>
+          <p className="text-lg text-muted-foreground mb-2">
+            Managing your {profile?.farm_type === 'both' ? 'pig and poultry' : profile?.farm_type} farm
+          </p>
+          <p className="text-lg text-muted-foreground mb-8">
+            Farm Size: {profile?.farm_size} acres
+          </p>
           <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            Comprehensive digital farm management for pig and poultry farms. 
+            Comprehensive digital farm management platform. 
             Enhance biosecurity, ensure compliance, and boost productivity with AI-powered tools.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -216,10 +231,10 @@ const Home = () => {
       <section className="py-20 bg-gradient-primary text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Secure Your Farm?
+            Ready to Enhance Your Farm?
           </h2>
           <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-            Join thousands of farmers who trust FarmSecure for their biosecurity needs
+            Join thousands of farmers who trust KrishiCure for their biosecurity needs
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="secondary">
