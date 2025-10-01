@@ -14,6 +14,62 @@ export type Database = {
   }
   public: {
     Tables: {
+      animals: {
+        Row: {
+          birth_date: string
+          created_at: string | null
+          farmer_id: string
+          gender: Database["public"]["Enums"]["animal_gender"]
+          health_status: Database["public"]["Enums"]["health_status"]
+          id: string
+          is_pregnant: boolean | null
+          is_vaccinated: boolean | null
+          notes: string | null
+          pregnancy_start_date: string | null
+          type: Database["public"]["Enums"]["animal_type"]
+          updated_at: string | null
+          vaccination_date: string | null
+        }
+        Insert: {
+          birth_date: string
+          created_at?: string | null
+          farmer_id: string
+          gender: Database["public"]["Enums"]["animal_gender"]
+          health_status?: Database["public"]["Enums"]["health_status"]
+          id?: string
+          is_pregnant?: boolean | null
+          is_vaccinated?: boolean | null
+          notes?: string | null
+          pregnancy_start_date?: string | null
+          type: Database["public"]["Enums"]["animal_type"]
+          updated_at?: string | null
+          vaccination_date?: string | null
+        }
+        Update: {
+          birth_date?: string
+          created_at?: string | null
+          farmer_id?: string
+          gender?: Database["public"]["Enums"]["animal_gender"]
+          health_status?: Database["public"]["Enums"]["health_status"]
+          id?: string
+          is_pregnant?: boolean | null
+          is_vaccinated?: boolean | null
+          notes?: string | null
+          pregnancy_start_date?: string | null
+          type?: Database["public"]["Enums"]["animal_type"]
+          updated_at?: string | null
+          vaccination_date?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "animals_farmer_id_fkey"
+            columns: ["farmer_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       contact_requests: {
         Row: {
           created_at: string | null
@@ -38,6 +94,39 @@ export type Database = {
           message?: string
           status?: string | null
           subject?: string
+        }
+        Relationships: []
+      }
+      educational_resources: {
+        Row: {
+          content: string
+          created_at: string | null
+          description: string
+          id: string
+          resource_type: string
+          tags: string[] | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          content: string
+          created_at?: string | null
+          description: string
+          id?: string
+          resource_type: string
+          tags?: string[] | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          content?: string
+          created_at?: string | null
+          description?: string
+          id?: string
+          resource_type?: string
+          tags?: string[] | null
+          title?: string
+          updated_at?: string | null
         }
         Relationships: []
       }
@@ -133,8 +222,11 @@ export type Database = {
       }
     }
     Enums: {
-      app_role: "farmer" | "policymaker"
+      animal_gender: "male" | "female"
+      animal_type: "pig" | "poultry"
+      app_role: "farmer" | "policymaker" | "guest"
       farm_type: "pig" | "poultry" | "both"
+      health_status: "healthy" | "sick" | "quarantined" | "deceased"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -262,8 +354,11 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      app_role: ["farmer", "policymaker"],
+      animal_gender: ["male", "female"],
+      animal_type: ["pig", "poultry"],
+      app_role: ["farmer", "policymaker", "guest"],
       farm_type: ["pig", "poultry", "both"],
+      health_status: ["healthy", "sick", "quarantined", "deceased"],
     },
   },
 } as const

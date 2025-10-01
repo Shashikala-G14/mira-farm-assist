@@ -1,0 +1,81 @@
+{
+  "app": {
+    "name": "কৃষিকিউর",
+    "tagline": "আপনার খামার জৈব নিরাপত্তা অংশীদার"
+  },
+  "nav": {
+    "home": "হোম",
+    "learning": "শেখা",
+    "animals": "আমার পশু",
+    "analytics": "বিশ্লেষণ",
+    "records": "রেকর্ড",
+    "alerts": "সতর্কতা",
+    "contact": "যোগাযোগ",
+    "policymaker": "ড্যাশবোর্ড",
+    "profile": "প্রোফাইল",
+    "signOut": "সাইন আউট"
+  },
+  "auth": {
+    "signIn": "সাইন ইন",
+    "signUp": "সাইন আপ",
+    "continueAsGuest": "অতিথি হিসাবে চালিয়ে যান",
+    "email": "ইমেইল",
+    "password": "পাসওয়ার্ড",
+    "name": "নাম",
+    "haveAccount": "ইতিমধ্যে একটি অ্যাকাউন্ট আছে?",
+    "noAccount": "কোন অ্যাকাউন্ট নেই?",
+    "welcome": "কৃষিকিউরে স্বাগতম",
+    "description": "আপনার খামার পরিচালনা করতে সাইন ইন করুন"
+  },
+  "home": {
+    "welcome": "ফিরে স্বাগতম",
+    "quickActions": "দ্রুত কর্ম",
+    "recentAlerts": "সাম্প্রতিক সতর্কতা",
+    "farmOverview": "খামার সংক্ষিপ্ত বিবরণ"
+  },
+  "animals": {
+    "title": "পশু তালিকা",
+    "addAnimal": "পশু যোগ করুন",
+    "filters": "ফিল্টার",
+    "type": "ধরন",
+    "gender": "লিঙ্গ",
+    "health": "স্বাস্থ্য অবস্থা",
+    "vaccination": "টিকাকরণ অবস্থা",
+    "all": "সব",
+    "pig": "শূকর",
+    "poultry": "হাঁস-মুরগি",
+    "male": "পুরুষ",
+    "female": "মহিলা",
+    "healthy": "সুস্থ",
+    "sick": "অসুস্থ",
+    "quarantined": "কোয়ারান্টাইন",
+    "vaccinated": "টিকা দেওয়া হয়েছে",
+    "notVaccinated": "টিকা দেওয়া হয়নি",
+    "pregnant": "গর্ভবতী",
+    "birthDate": "জন্ম তারিখ",
+    "vaccinationDate": "টিকার তারিখ",
+    "notes": "নোট",
+    "save": "সংরক্ষণ",
+    "cancel": "বাতিল",
+    "edit": "সম্পাদনা",
+    "delete": "মুছুন"
+  },
+  "analytics": {
+    "title": "বিশ্লেষণ ড্যাশবোর্ড",
+    "totalAnimals": "মোট পশু",
+    "healthyAnimals": "সুস্থ পশু",
+    "vaccinationRate": "টিকাকরণ হার",
+    "pregnantAnimals": "গর্ভবতী পশু",
+    "healthDistribution": "স্বাস্থ্য বিতরণ",
+    "typeDistribution": "পশু ধরন বিতরণ",
+    "genderDistribution": "লিঙ্গ বিতরণ",
+    "growthTrend": "খামার বৃদ্ধি প্রবণতা"
+  },
+  "learning": {
+    "title": "শেখার কেন্দ্র",
+    "description": "ব্যাপক প্রশিক্ষণের সাথে খামার জৈব নিরাপত্তায় দক্ষতা অর্জন করুন",
+    "videos": "ভিডিও টিউটোরিয়াল",
+    "articles": "নিবন্ধ",
+    "guides": "গাইড"
+  }
+}

@@ -6,11 +6,12 @@ import { useNavigate } from 'react-router-dom';
 interface AuthContextType {
   user: User | null;
   session: Session | null;
-  userRole: 'farmer' | 'policymaker' | null;
+  userRole: 'farmer' | 'policymaker' | 'guest' | null;
   profile: any | null;
   loading: boolean;
   signOut: () => Promise<void>;
   refreshProfile: () => Promise<void>;
+  signInAsGuest: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType>({
@@ -21,6 +22,7 @@ const AuthContext = createContext<AuthContextType>({
   loading: true,
   signOut: async () => {},
   refreshProfile: async () => {},
+  signInAsGuest: async () => {},
 });
 
 export const useAuth = () => useContext(AuthContext);
@@ -28,7 +30,7 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
-  const [userRole, setUserRole] = useState<'farmer' | 'policymaker' | null>(null);
+  const [userRole, setUserRole] = useState<'farmer' | 'policymaker' | 'guest' | null>(null);
   const [profile, setProfile] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -41,7 +43,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       .single();
     
     if (data) {
-      setUserRole(data.role as 'farmer' | 'policymaker');
+      setUserRole(data.role as 'farmer' | 'policymaker' | 'guest');
     }
   };
 
@@ -106,8 +108,15 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     navigate('/auth');
   };
 
+  const signInAsGuest = async () => {
+    // For guest users, we set a special flag in localStorage
+    setUserRole('guest');
+    localStorage.setItem('isGuest', 'true');
+    navigate('/learning');
+  };
+
   return (
-    <AuthContext.Provider value={{ user, session, userRole, profile, loading, signOut, refreshProfile }}>
+    <AuthContext.Provider value={{ user, session, userRole, profile, loading, signOut, refreshProfile, signInAsGuest }}>
       {children}
     </AuthContext.Provider>
   );

@@ -1,0 +1,81 @@
+{
+  "app": {
+    "name": "KrishiCure",
+    "tagline": "Your Farm Biosecurity Partner"
+  },
+  "nav": {
+    "home": "Home",
+    "learning": "Learning",
+    "animals": "My Animals",
+    "analytics": "Analytics",
+    "records": "Records",
+    "alerts": "Alerts",
+    "contact": "Contact",
+    "policymaker": "Dashboard",
+    "profile": "Profile",
+    "signOut": "Sign Out"
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "continueAsGuest": "Continue as Guest",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "haveAccount": "Already have an account?",
+    "noAccount": "Don't have an account?",
+    "welcome": "Welcome to KrishiCure",
+    "description": "Sign in to manage your farm and track biosecurity"
+  },
+  "home": {
+    "welcome": "Welcome back",
+    "quickActions": "Quick Actions",
+    "recentAlerts": "Recent Alerts",
+    "farmOverview": "Farm Overview"
+  },
+  "animals": {
+    "title": "Animal Inventory",
+    "addAnimal": "Add Animal",
+    "filters": "Filters",
+    "type": "Type",
+    "gender": "Gender",
+    "health": "Health Status",
+    "vaccination": "Vaccination Status",
+    "all": "All",
+    "pig": "Pig",
+    "poultry": "Poultry",
+    "male": "Male",
+    "female": "Female",
+    "healthy": "Healthy",
+    "sick": "Sick",
+    "quarantined": "Quarantined",
+    "vaccinated": "Vaccinated",
+    "notVaccinated": "Not Vaccinated",
+    "pregnant": "Pregnant",
+    "birthDate": "Birth Date",
+    "vaccinationDate": "Vaccination Date",
+    "notes": "Notes",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "analytics": {
+    "title": "Analytics Dashboard",
+    "totalAnimals": "Total Animals",
+    "healthyAnimals": "Healthy Animals",
+    "vaccinationRate": "Vaccination Rate",
+    "pregnantAnimals": "Pregnant Animals",
+    "healthDistribution": "Health Distribution",
+    "typeDistribution": "Animal Type Distribution",
+    "genderDistribution": "Gender Distribution",
+    "growthTrend": "Farm Growth Trend"
+  },
+  "learning": {
+    "title": "Learning Center",
+    "description": "Master farm biosecurity with comprehensive training",
+    "videos": "Video Tutorials",
+    "articles": "Articles",
+    "guides": "Guides"
+  }
+}

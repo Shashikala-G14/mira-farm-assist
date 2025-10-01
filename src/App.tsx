@@ -11,6 +11,7 @@ import ProfileSetup from "./pages/ProfileSetup";
 import Learning from "./pages/Learning";
 import RiskAssessment from "./pages/RiskAssessment";
 import Analytics from "./pages/Analytics";
+import Animals from "./pages/Animals";
 import Alerts from "./pages/Alerts";
 import Records from "./pages/Records";
 import PolicymakerDashboard from "./pages/PolicymakerDashboard";
@@ -34,6 +35,7 @@ const App = () => (
             <Route path="/learning" element={<Layout><Learning /></Layout>} />
             <Route path="/risk-assessment" element={<Layout><RiskAssessment /></Layout>} />
             <Route path="/analytics" element={<Layout><Analytics /></Layout>} />
+            <Route path="/animals" element={<Layout><Animals /></Layout>} />
             <Route path="/alerts" element={<Layout><Alerts /></Layout>} />
             <Route path="/records" element={<Layout><Records /></Layout>} />
             <Route path="/notifications" element={<Layout><Notifications /></Layout>} />

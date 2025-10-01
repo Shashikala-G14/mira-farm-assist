@@ -1,0 +1,81 @@
+{
+  "app": {
+    "name": "कृषिक्योर",
+    "tagline": "आपका खेत जैव सुरक्षा साथी"
+  },
+  "nav": {
+    "home": "होम",
+    "learning": "सीखना",
+    "animals": "मेरे पशु",
+    "analytics": "विश्लेषण",
+    "records": "रिकॉर्ड",
+    "alerts": "अलर्ट",
+    "contact": "संपर्क करें",
+    "policymaker": "डैशबोर्ड",
+    "profile": "प्रोफाइल",
+    "signOut": "साइन आउट"
+  },
+  "auth": {
+    "signIn": "साइन इन करें",
+    "signUp": "साइन अप करें",
+    "continueAsGuest": "अतिथि के रूप में जारी रखें",
+    "email": "ईमेल",
+    "password": "पासवर्ड",
+    "name": "नाम",
+    "haveAccount": "पहले से खाता है?",
+    "noAccount": "खाता नहीं है?",
+    "welcome": "कृषिक्योर में आपका स्वागत है",
+    "description": "अपने खेत का प्रबंधन करने के लिए साइन इन करें"
+  },
+  "home": {
+    "welcome": "वापसी पर स्वागत है",
+    "quickActions": "त्वरित कार्य",
+    "recentAlerts": "हाल के अलर्ट",
+    "farmOverview": "खेत का अवलोकन"
+  },
+  "animals": {
+    "title": "पशु सूची",
+    "addAnimal": "पशु जोड़ें",
+    "filters": "फ़िल्टर",
+    "type": "प्रकार",
+    "gender": "लिंग",
+    "health": "स्वास्थ्य स्थिति",
+    "vaccination": "टीकाकरण स्थिति",
+    "all": "सभी",
+    "pig": "सूअर",
+    "poultry": "मुर्गी पालन",
+    "male": "नर",
+    "female": "मादा",
+    "healthy": "स्वस्थ",
+    "sick": "बीमार",
+    "quarantined": "संगरोध",
+    "vaccinated": "टीका लगाया गया",
+    "notVaccinated": "टीका नहीं लगाया गया",
+    "pregnant": "गर्भवती",
+    "birthDate": "जन्म तिथि",
+    "vaccinationDate": "टीकाकरण तिथि",
+    "notes": "नोट्स",
+    "save": "सहेजें",
+    "cancel": "रद्द करें",
+    "edit": "संपादित करें",
+    "delete": "हटाएं"
+  },
+  "analytics": {
+    "title": "विश्लेषण डैशबोर्ड",
+    "totalAnimals": "कुल पशु",
+    "healthyAnimals": "स्वस्थ पशु",
+    "vaccinationRate": "टीकाकरण दर",
+    "pregnantAnimals": "गर्भवती पशु",
+    "healthDistribution": "स्वास्थ्य वितरण",
+    "typeDistribution": "पशु प्रकार वितरण",
+    "genderDistribution": "लिंग वितरण",
+    "growthTrend": "खेत विकास रुझान"
+  },
+  "learning": {
+    "title": "सीखने का केंद्र",
+    "description": "व्यापक प्रशिक्षण के साथ खेत जैव सुरक्षा में महारत हासिल करें",
+    "videos": "वीडियो ट्यूटोरियल",
+    "articles": "लेख",
+    "guides": "गाइड"
+  }
+}

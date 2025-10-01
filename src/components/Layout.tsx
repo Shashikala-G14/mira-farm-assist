@@ -14,9 +14,10 @@ const Layout = ({ children }: LayoutProps) => {
 
   useEffect(() => {
     if (!loading) {
-      if (!user) {
+      const isGuest = localStorage.getItem('isGuest') === 'true';
+      if (!user && !isGuest) {
         navigate('/auth');
-      } else if (!profile?.farm_type && location.pathname !== '/profile-setup') {
+      } else if (user && !profile?.farm_type && location.pathname !== '/profile-setup') {
         navigate('/profile-setup');
       }
     }
@@ -30,7 +31,8 @@ const Layout = ({ children }: LayoutProps) => {
     );
   }
 
-  if (!user) return null;
+  const isGuest = localStorage.getItem('isGuest') === 'true';
+  if (!user && !isGuest) return null;
 
   return (
     <div className="min-h-screen bg-background">

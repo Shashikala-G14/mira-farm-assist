@@ -1,0 +1,81 @@
+{
+  "app": {
+    "name": "కృషికుర్",
+    "tagline": "మీ వ్యవసాయ జీవ భద్రత భాగస్వామి"
+  },
+  "nav": {
+    "home": "హోమ్",
+    "learning": "నేర్చుకోవడం",
+    "animals": "నా జంతువులు",
+    "analytics": "విశ్లేషణ",
+    "records": "రికార్డులు",
+    "alerts": "హెచ్చరికలు",
+    "contact": "సంప్రదించండి",
+    "policymaker": "డాష్‌బోర్డ్",
+    "profile": "ప్రొఫైల్",
+    "signOut": "సైన్ అవుట్"
+  },
+  "auth": {
+    "signIn": "సైన్ ఇన్",
+    "signUp": "సైన్ అప్",
+    "continueAsGuest": "అతిథిగా కొనసాగించండి",
+    "email": "ఇమెయిల్",
+    "password": "పాస్‌వర్డ్",
+    "name": "పేరు",
+    "haveAccount": "ఇప్పటికే ఖాతా ఉందా?",
+    "noAccount": "ఖాతా లేదా?",
+    "welcome": "కృషికుర్‌కు స్వాగతం",
+    "description": "మీ వ్యవసాయాన్ని నిర్వహించడానికి సైన్ ఇన్ చేయండి"
+  },
+  "home": {
+    "welcome": "తిరిగి స్వాగతం",
+    "quickActions": "త్వరిత చర్యలు",
+    "recentAlerts": "ఇటీవల హెచ్చరికలు",
+    "farmOverview": "వ్యవసాయ అవలోకనం"
+  },
+  "animals": {
+    "title": "జంతు జాబితా",
+    "addAnimal": "జంతువును జోడించండి",
+    "filters": "ఫిల్టర్లు",
+    "type": "రకం",
+    "gender": "లింగం",
+    "health": "ఆరోగ్య స్థితి",
+    "vaccination": "టీకా స్థితి",
+    "all": "అన్నీ",
+    "pig": "పంది",
+    "poultry": "పౌల్ట్రీ",
+    "male": "మగ",
+    "female": "ఆడ",
+    "healthy": "ఆరోగ్యంగా",
+    "sick": "అనారోగ్యంగా",
+    "quarantined": "క్వారంటైన్",
+    "vaccinated": "టీకా వేయబడింది",
+    "notVaccinated": "టీకా వేయలేదు",
+    "pregnant": "గర్భవతి",
+    "birthDate": "పుట్టిన తేదీ",
+    "vaccinationDate": "టీకా తేదీ",
+    "notes": "గమనికలు",
+    "save": "సేవ్ చేయండి",
+    "cancel": "రద్దు చేయండి",
+    "edit": "సవరించండి",
+    "delete": "తొలగించండి"
+  },
+  "analytics": {
+    "title": "విశ్లేషణ డాష్‌బోర్డ్",
+    "totalAnimals": "మొత్తం జంతువులు",
+    "healthyAnimals": "ఆరోగ్యకరమైన జంతువులు",
+    "vaccinationRate": "టీకా రేటు",
+    "pregnantAnimals": "గర్భిణీ జంతువులు",
+    "healthDistribution": "ఆరోగ్య పంపిణీ",
+    "typeDistribution": "జంతు రకం పంపిణీ",
+    "genderDistribution": "లింగ పంపిణీ",
+    "growthTrend": "వ్యవసాయ వృద్ధి ధోరణి"
+  },
+  "learning": {
+    "title": "అభ్యాస కేంద్రం",
+    "description": "సమగ్ర శిక్షణతో వ్యవసాయ జీవ భద్రతలో నైపుణ్యం సాధించండి",
+    "videos": "వీడియో ట్యుటోరియల్స్",
+    "articles": "వ్యాసాలు",
+    "guides": "గైడ్లు"
+  }
+}

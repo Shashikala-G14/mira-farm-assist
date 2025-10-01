@@ -1,30 +1,90 @@
+import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { BarChart3, TrendingUp, Shield, Users, AlertTriangle, Download } from 'lucide-react';
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Analytics = () => {
+  const { t } = useTranslation();
+  const { user } = useAuth();
+  const [animals, setAnimals] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchAnimals();
+  }, []);
+
+  const fetchAnimals = async () => {
+    if (!user) return;
+    
+    const { data, error } = await supabase
+      .from('animals')
+      .select('*')
+      .eq('farmer_id', user.id);
+    
+    if (data) {
+      setAnimals(data);
+    }
+    setLoading(false);
+  };
+
+  // Calculate metrics from real data
+  const totalAnimals = animals.length;
+  const healthyAnimals = animals.filter(a => a.health_status === 'healthy').length;
+  const vaccinatedAnimals = animals.filter(a => a.is_vaccinated).length;
+  const pregnantAnimals = animals.filter(a => a.is_pregnant).length;
+  const vaccinationRate = totalAnimals > 0 ? Math.round((vaccinatedAnimals / totalAnimals) * 100) : 0;
+  const healthRate = totalAnimals > 0 ? Math.round((healthyAnimals / totalAnimals) * 100) : 0;
+
   const keyMetrics = [
-    { label: 'Current Risk Score', value: '28%', trend: 'down', icon: Shield, color: 'text-success' },
-    { label: 'Compliance Rate', value: '94%', trend: 'up', icon: BarChart3, color: 'text-primary' },
-    { label: 'Productivity Index', value: '87%', trend: 'up', icon: TrendingUp, color: 'text-accent' },
-    { label: 'Active Alerts', value: '3', trend: 'stable', icon: AlertTriangle, color: 'text-warning' }
+    { label: t('analytics.totalAnimals'), value: totalAnimals.toString(), trend: 'up', icon: Users, color: 'text-primary' },
+    { label: t('analytics.healthyAnimals'), value: healthyAnimals.toString(), trend: 'up', icon: Shield, color: 'text-success' },
+    { label: t('analytics.vaccinationRate'), value: `${vaccinationRate}%`, trend: 'up', icon: BarChart3, color: 'text-accent' },
+    { label: t('analytics.pregnantAnimals'), value: pregnantAnimals.toString(), trend: 'stable', icon: TrendingUp, color: 'text-warning' }
   ];
 
-  const animalData = {
-    total: 450,
-    healthy: 420,
-    diseased: 8,
-    quarantined: 12,
-    new: 10
-  };
+  // Health distribution data for pie chart
+  const healthDistribution = [
+    { name: t('animals.healthy'), value: animals.filter(a => a.health_status === 'healthy').length, color: '#22c55e' },
+    { name: t('animals.sick'), value: animals.filter(a => a.health_status === 'sick').length, color: '#ef4444' },
+    { name: t('animals.quarantined'), value: animals.filter(a => a.health_status === 'quarantined').length, color: '#f59e0b' },
+  ].filter(item => item.value > 0);
+
+  // Type distribution
+  const typeDistribution = [
+    { name: t('animals.pig'), value: animals.filter(a => a.type === 'pig').length, color: '#8b5cf6' },
+    { name: t('animals.poultry'), value: animals.filter(a => a.type === 'poultry').length, color: '#06b6d4' },
+  ].filter(item => item.value > 0);
+
+  // Gender distribution
+  const genderDistribution = [
+    { name: t('animals.male'), value: animals.filter(a => a.gender === 'male').length, color: '#3b82f6' },
+    { name: t('animals.female'), value: animals.filter(a => a.gender === 'female').length, color: '#ec4899' },
+  ].filter(item => item.value > 0);
+
+  // Growth trend (simulated monthly data)
+  const growthTrend = [
+    { month: 'Jan', animals: Math.max(0, totalAnimals - 40) },
+    { month: 'Feb', animals: Math.max(0, totalAnimals - 30) },
+    { month: 'Mar', animals: Math.max(0, totalAnimals - 20) },
+    { month: 'Apr', animals: Math.max(0, totalAnimals - 10) },
+    { month: 'May', animals: totalAnimals },
+  ];
+
+  if (loading) {
+    return <div className="container mx-auto px-4 py-8">Loading...</div>;
+  }
 
   return (
     <div className="container mx-auto px-4 py-8 space-y-8">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold">Analytics Dashboard</h1>
+          <h1 className="text-3xl font-bold">{t('analytics.title')}</h1>
           <p className="text-muted-foreground">Monitor your farm performance and biosecurity metrics</p>
         </div>
         <Button>
@@ -56,45 +116,88 @@ const Analytics = () => {
         })}
       </div>
 
-      {/* Animal Health Distribution */}
+      {/* Charts */}
+      <div className="grid md:grid-cols-2 gap-6">
+        {/* Health Distribution */}
+        <Card>
+          <CardHeader>
+            <CardTitle>{t('analytics.healthDistribution')}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {healthDistribution.length > 0 ? (
+              <ResponsiveContainer width="100%" height={250}>
+                <PieChart>
+                  <Pie
+                    data={healthDistribution}
+                    cx="50%"
+                    cy="50%"
+                    labelLine={false}
+                    label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                    outerRadius={80}
+                    fill="#8884d8"
+                    dataKey="value"
+                  >
+                    {healthDistribution.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Pie>
+                  <Legend />
+                </PieChart>
+              </ResponsiveContainer>
+            ) : (
+              <p className="text-center text-muted-foreground py-8">No data available</p>
+            )}
+          </CardContent>
+        </Card>
+
+        {/* Type Distribution */}
+        <Card>
+          <CardHeader>
+            <CardTitle>{t('analytics.typeDistribution')}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {typeDistribution.length > 0 ? (
+              <ResponsiveContainer width="100%" height={250}>
+                <PieChart>
+                  <Pie
+                    data={typeDistribution}
+                    cx="50%"
+                    cy="50%"
+                    labelLine={false}
+                    label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                    outerRadius={80}
+                    fill="#8884d8"
+                    dataKey="value"
+                  >
+                    {typeDistribution.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Pie>
+                  <Legend />
+                </PieChart>
+              </ResponsiveContainer>
+            ) : (
+              <p className="text-center text-muted-foreground py-8">No data available</p>
+            )}
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Growth Trend */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center">
-            <Users className="w-5 h-5 mr-2" />
-            Animal Health Distribution
-          </CardTitle>
+          <CardTitle>{t('analytics.growthTrend')}</CardTitle>
         </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
-            <div>
-              <div className="text-2xl font-bold">{animalData.total}</div>
-              <div className="text-sm text-muted-foreground">Total Animals</div>
-            </div>
-            <div>
-              <div className="text-2xl font-bold text-success">{animalData.healthy}</div>
-              <div className="text-sm text-muted-foreground">Healthy</div>
-            </div>
-            <div>
-              <div className="text-2xl font-bold text-destructive">{animalData.diseased}</div>
-              <div className="text-sm text-muted-foreground">Diseased</div>
-            </div>
-            <div>
-              <div className="text-2xl font-bold text-warning">{animalData.quarantined}</div>
-              <div className="text-sm text-muted-foreground">Quarantined</div>
-            </div>
-            <div>
-              <div className="text-2xl font-bold text-accent">{animalData.new}</div>
-              <div className="text-sm text-muted-foreground">New Animals</div>
-            </div>
-          </div>
-          
-          <div className="space-y-3">
-            <div className="flex justify-between items-center">
-              <span className="text-sm">Healthy Animals</span>
-              <span className="text-sm">{Math.round((animalData.healthy / animalData.total) * 100)}%</span>
-            </div>
-            <Progress value={(animalData.healthy / animalData.total) * 100} className="h-2" />
-          </div>
+        <CardContent>
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart data={growthTrend}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="month" />
+              <YAxis />
+              <Tooltip />
+              <Line type="monotone" dataKey="animals" stroke="#8b5cf6" strokeWidth={2} />
+            </LineChart>
+          </ResponsiveContainer>
         </CardContent>
       </Card>
     </div>
